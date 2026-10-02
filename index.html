@@ -156,15 +156,12 @@ p { margin: 0 0 12px; max-width: 68ch; }
 .list-item { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
 .list-item h3 { border: none; padding: 0; margin-bottom: 4px; }
 .list-item p { margin: 0; color: var(--mute); line-height: 1.5; }
-
-/* Desktop Navigation */
-@media (min-width: 1024px) {
-  body { flex-direction: row; }
-  .navbar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border-bottom: none; border-right: 1px solid var(--line); align-items: flex-start; justify-content: flex-start; }
-  .nav-container { flex-direction: column; padding: 40px 20px; }
-  .app-container { margin: 40px auto 40px 280px; max-width: 800px; padding: 0 40px; }
-  .nav-item { text-align: left; padding: 12px 16px; font-size: 1rem; }
-}
+/* Profile Header & Scrollbar */
+.nav-container::-webkit-scrollbar { height: 6px; }
+.nav-container::-webkit-scrollbar-thumb { background-color: var(--line); border-radius: 10px; }
+.profile-header { display: flex; gap: 24px; align-items: center; margin-bottom: 24px; }
+.profile-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid var(--line); }
+@media (max-width: 600px) { .profile-header { flex-direction: column; text-align: center; } }
 </style>
 </head>
 <body>
@@ -188,8 +185,13 @@ p { margin: 0 0 12px; max-width: 68ch; }
   <section id="home" class="tab-content active">
     <div class="hero">
       <div>
-        <h1>Saikumar Nukala</h1>
-        <p class="role">ETL / Data Quality Test Engineer</p>
+        <div class="profile-header">
+          <img src="profile.jpg" alt="Saikumar Nukala" class="profile-img">
+          <div>
+            <h1>Saikumar Nukala</h1>
+            <p class="role">ETL / Data Quality Test Engineer</p>
+          </div>
+        </div>
         <p>I validate that data arrives complete, correct and traceable. Over 5+ years I have tested ETL and data warehouse loads, data migrations and data-quality rules for Nomura (UK), ANZ Bank (New Zealand), IQVIA and Transamerica (US, via Deloitte).</p>
         <p>I work remotely from India. Primary hours are IST, with UK/EU mornings and US East evenings on request. Open to full-time or contract roles.</p>
         <div class="links">
