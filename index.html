@@ -137,6 +137,7 @@ a:hover { color: #fff; }
   animation: spin 10s linear infinite;
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); } 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); } }
 .profile-img { 
   width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
   border: 8px solid var(--bg); background: var(--bg);
@@ -320,9 +321,15 @@ a:hover { color: #fff; }
           </div>
         </div>
 
-        <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">
-          📍 Remote from India &bull; Primary hours: IST &bull; Open to full-time or contract roles
-        </p>
+        <div style="margin-bottom: 24px;">
+          <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); padding: 8px 16px; border-radius: 99px; margin-bottom: 12px;">
+            <span style="display: block; width: 10px; height: 10px; background: #38bdf8; border-radius: 50%; animation: pulse 2s infinite;"></span>
+            <span style="font-size: 0.95rem; color: var(--accent); font-weight: 700; font-family: 'Outfit', sans-serif; letter-spacing: 0.02em;">Open to new opportunities &mdash; let's connect!</span>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin: 0;">
+            📍 Remote from India &bull; Primary hours: IST 
+          </p>
+        </div>
         
         <div class="links">
           <a class="btn main" href="https://www.linkedin.com/in/saikumarnukala" target="_blank">
