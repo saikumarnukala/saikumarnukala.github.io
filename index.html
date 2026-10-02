@@ -9,13 +9,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Advanced Modern CSS */
+/* Advanced Modern CSS - The "Masterpiece" Edition */
 :root {
-  --bg: #030712;
+  --bg: #020617;
   --surface: rgba(30, 41, 59, 0.4);
   --surface-hover: rgba(30, 41, 59, 0.7);
   --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(125, 211, 252, 0.3);
+  --border-hover: rgba(56, 189, 248, 0.4);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --accent: #38bdf8;
@@ -24,9 +24,19 @@
 }
 
 * { box-sizing: border-box; }
+::selection { background: rgba(56, 189, 248, 0.3); color: #fff; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
 body {
   margin: 0;
   background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.04) 0%, transparent 50%);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1.6;
@@ -41,20 +51,20 @@ body {
 }
 .orb {
   position: absolute; border-radius: 50%; filter: blur(120px);
-  animation: float 20s infinite ease-in-out alternate;
+  animation: float 25s infinite ease-in-out alternate;
 }
-.orb-1 { top: -20%; left: -10%; width: 50vw; height: 50vw; background: rgba(56, 189, 248, 0.15); }
-.orb-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: rgba(129, 140, 248, 0.12); animation-delay: -10s; }
+.orb-1 { top: -20%; left: -10%; width: 50vw; height: 50vw; background: rgba(56, 189, 248, 0.12); }
+.orb-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: rgba(129, 140, 248, 0.08); animation-delay: -12s; }
 
 @keyframes float {
   0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(10%, 15%) scale(1.2); }
+  100% { transform: translate(8%, 12%) scale(1.15); }
 }
 
 /* Typography */
 h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; margin: 0; font-weight: 700; }
 h1 { 
-  font-size: clamp(3rem, 8vw, 4.5rem); 
+  font-size: clamp(3rem, 8vw, 5rem); 
   letter-spacing: -0.04em; 
   line-height: 1.1; 
   margin-bottom: 8px;
@@ -70,9 +80,9 @@ h2::after {
   content: ''; position: absolute; bottom: -12px; left: 0; width: 40px; height: 4px;
   background: var(--accent-gradient); border-radius: 2px;
 }
-h3 { font-size: 1.25rem; margin-bottom: 8px; letter-spacing: -0.01em; color: #fff; }
+h3 { font-size: 1.4rem; margin-bottom: 8px; letter-spacing: -0.01em; color: #fff; }
 p { margin: 0 0 16px; color: var(--text-muted); }
-.role { font-size: 1.5rem; color: var(--accent); font-weight: 500; font-family: 'Outfit', sans-serif; margin-bottom: 24px; letter-spacing: -0.01em; }
+.role { font-size: 1.6rem; color: var(--accent); font-weight: 500; font-family: 'Outfit', sans-serif; margin-bottom: 24px; letter-spacing: -0.01em; }
 
 a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
 a:hover { color: #fff; }
@@ -80,14 +90,14 @@ a:hover { color: #fff; }
 /* Navigation */
 .navbar {
   position: fixed; top: 0; left: 0; width: 100%;
-  background: rgba(3, 7, 18, 0.75);
+  background: rgba(2, 6, 23, 0.8);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
   display: flex; justify-content: center;
 }
 .nav-container {
-  display: flex; gap: 12px; padding: 16px 24px;
+  display: flex; gap: 8px; padding: 16px 24px;
   overflow-x: auto; max-width: 1100px; width: 100%;
   scrollbar-width: none;
 }
@@ -95,7 +105,7 @@ a:hover { color: #fff; }
 .nav-item {
   background: transparent; border: 1px solid transparent; color: var(--text-muted);
   font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
-  padding: 10px 24px; border-radius: 99px; cursor: pointer;
+  padding: 10px 20px; border-radius: 99px; cursor: pointer;
   white-space: nowrap; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
@@ -114,7 +124,7 @@ a:hover { color: #fff; }
 }
 
 /* Hero Section */
-.hero { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; margin: 0 auto; }
+.hero { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 850px; margin: 0 auto; }
 .profile-img-container {
   position: relative; width: 180px; height: 180px; margin-bottom: 32px;
 }
@@ -128,11 +138,34 @@ a:hover { color: #fff; }
   width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
   border: 6px solid var(--bg); background: var(--bg);
 }
+
+/* Stats Row */
+.stats-row {
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  margin: 40px 0; width: 100%;
+}
+.stat-box {
+  flex: 1; min-width: 180px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 24px 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stat-box:hover {
+  transform: translateY(-5px); border-color: var(--border-hover);
+  background: var(--surface-hover);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 20px rgba(56,189,248,0.15);
+}
+.stat-number { font-size: 2.8rem; font-family: 'Outfit', sans-serif; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; text-align: center; }
+
+/* Buttons */
 .links { display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
 .btn { 
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px; 
-  padding: 14px 32px; border-radius: 99px;
-  font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1rem; 
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; 
+  padding: 16px 36px; border-radius: 99px;
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; 
   text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn.main { background: var(--text-main); color: #000; }
@@ -140,53 +173,85 @@ a:hover { color: #fff; }
 .btn-outline { background: var(--surface); color: var(--text-main); border: 1px solid var(--border); }
 .btn-outline:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
-/* Modern Cards */
+/* Timeline (Experience & Education) */
+.timeline {
+  position: relative; padding-left: 40px; margin-top: 20px;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--accent) 0%, rgba(56,189,248,0.05) 100%);
+}
+.timeline-item {
+  position: relative; margin-bottom: 40px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 24px; padding: 40px; backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.timeline-item::before {
+  content: ''; position: absolute; left: -41px; top: 40px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--bg); border: 3px solid var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+.timeline-item:hover {
+  transform: translateX(5px); border-color: var(--border-hover);
+  background: var(--surface-hover);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(56, 189, 248, 0.1);
+}
+
+.job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.job-header .date { font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--text-muted); }
+.client-badge { display: inline-block; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 99px; font-size: 0.85rem; font-weight: 700; font-family: 'Outfit', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid rgba(56, 189, 248, 0.2); }
+.timeline-item ul { margin: 0; padding-left: 0; list-style: none; }
+.timeline-item li { position: relative; padding-left: 32px; margin: 16px 0; color: var(--text-muted); }
+.timeline-item li::before {
+  content: '→'; position: absolute; left: 0; top: 0px; color: var(--accent); font-weight: bold; font-family: 'Outfit', sans-serif; font-size: 1.1rem;
+}
+.tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+.tech-pill { background: rgba(255,255,255,0.05); color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* Modern Cards Grid */
 .cards, .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-.card, .skill-category, .list-item, .job {
+.card, .skill-category {
   background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border); border-radius: 24px; padding: 36px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative; overflow: hidden;
 }
-.card::before, .skill-category::before, .job::before, .list-item::before {
+.card::before, .skill-category::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
 }
-.card:hover, .skill-category:hover, .job:hover, .list-item:hover { 
+.card:hover, .skill-category:hover { 
   transform: translateY(-6px); 
   border-color: var(--border-hover);
   background: var(--surface-hover);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(56, 189, 248, 0.1);
 }
 
-/* Experience */
-.job { padding: 40px; margin-bottom: 24px; }
-.job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
-.job .meta { display: inline-block; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 99px; font-size: 0.85rem; font-weight: 700; font-family: 'Outfit', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid rgba(56, 189, 248, 0.2); }
-.job ul { margin: 0; padding-left: 0; list-style: none; }
-.job li { position: relative; padding-left: 32px; margin: 16px 0; color: var(--text-muted); }
-.job li::before {
-  content: '→'; position: absolute; left: 0; top: 0px; color: var(--accent); font-weight: bold; font-family: 'Outfit', sans-serif; font-size: 1.1rem;
-}
-
-/* Project/Company Cards */
+/* Specific Card elements */
 .card .meta { display: inline-block; background: rgba(129, 140, 248, 0.1); color: #818cf8; padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(129, 140, 248, 0.2); }
 
 /* Skills Tags */
-.skill-category h3 { margin-bottom: 20px; font-size: 1.4rem; }
+.skill-category h3 { margin-bottom: 24px; font-size: 1.4rem; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-tag { 
   background: rgba(255,255,255,0.03); border: 1px solid var(--border); 
   padding: 8px 16px; border-radius: 12px; font-size: 0.95rem; color: var(--text-main);
   transition: all 0.3s; font-weight: 500;
 }
-.skill-category:hover .skill-tag { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); }
+.skill-category:hover .skill-tag { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
 
 @media (max-width: 768px) {
   .app-container { padding: 0 20px; margin-top: 120px; }
   h1 { font-size: 2.5rem; }
-  .job, .card, .skill-category, .list-item { padding: 24px; }
+  .timeline { padding-left: 20px; }
+  .timeline::before { left: 0px; }
+  .timeline-item::before { left: -27px; width: 12px; height: 12px; }
+  .timeline-item, .card, .skill-category { padding: 24px; }
   .hero { margin-bottom: 20px; }
+  .stats-row { gap: 12px; }
+  .stat-box { min-width: 130px; padding: 16px 12px; }
+  .stat-number { font-size: 2rem; }
 }
 </style>
 </head>
@@ -220,29 +285,44 @@ a:hover { color: #fff; }
       </div>
       <h1 class="gradient-text">Saikumar Nukala</h1>
       <p class="role">ETL / Data Quality Test Engineer</p>
+      
       <p style="font-size: 1.15rem; color: #fff; max-width: 75ch; margin-bottom: 16px; line-height: 1.6;">
         ETL / Data Quality Test Engineer with <strong>5+ years of experience</strong> across capital-markets surveillance, banking data projects, and cloud migration validation.
       </p>
       <p style="max-width: 75ch; margin-bottom: 24px; line-height: 1.7;">
         Validated 500+ data-quality rule checks using in-house DQE and Informatica DQ and investigated failed validations to root cause across ETL/DWH and data-quality testing. Hands-on with SQL source-to-target validation, reconciliation, migration testing, Python validation automation, BI testing, API testing, and Jenkins.
       </p>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; max-width: 800px;">
-        <span class="skill-tag" style="background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.3); color: var(--accent);">Nomura (UK)</span>
-        <span class="skill-tag" style="background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.3); color: var(--accent);">ANZ Bank (New Zealand)</span>
-        <span class="skill-tag" style="background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.3); color: var(--accent);">IQVIA</span>
-        <span class="skill-tag" style="background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.3); color: var(--accent);">Transamerica (US)</span>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years Exp</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Rules Validated</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">700+</span>
+          <span class="stat-label">Automated Tests</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Global Clients</span>
+        </div>
       </div>
-      <p style="font-size: 0.95rem; color: var(--text-muted);">
+
+      <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">
         📍 Remote from India &bull; Primary hours: IST &bull; Open to full-time or contract roles
       </p>
       
       <div class="links">
         <a class="btn main" href="https://www.linkedin.com/in/saikumarnukala" target="_blank">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
         <a class="btn btn-outline" href="https://github.com/saikumarnukala" target="_blank">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           GitHub
         </a>
       </div>
@@ -251,81 +331,115 @@ a:hover { color: #fff; }
 
   <!-- Experience Section -->
   <section id="experience" class="tab-content">
-    <h2>Experience</h2>
-    <article class="job">
-      <div class="job-header">
-        <div>
-          <h3>Quality Analyst, Matrix USA</h3>
-          <p style="margin: 0;">Oct 2024 &ndash; Present</p>
+    <h2>Experience Journey</h2>
+    <div class="timeline">
+      
+      <article class="timeline-item">
+        <div class="job-header">
+          <div>
+            <h3>Quality Analyst, Matrix USA</h3>
+            <p class="date">Oct 2024 &ndash; Present</p>
+          </div>
+          <span class="client-badge">Client: Nomura (UK)</span>
         </div>
-        <span class="meta">Client: Nomura (UK)</span>
-      </div>
-      <ul>
-        <li>Validated ETL/DWH and cloud data across SIT and Production for the SMARTS market-abuse surveillance platform covering Fixed Income and Foreign Exchange.</li>
-        <li>Validated data-quality rules on the in-house DQE and investigated failed validations to root cause.</li>
-        <li>Reconciled source and target datasets with SQL structure, duplicate, null, record-count, DDL and column-mapping checks across 50+ tables per release.</li>
-        <li>Authored and executed 700+ automated Cucumber test cases, run through Jenkins CI/CD.</li>
-      </ul>
-    </article>
-    <article class="job">
-      <div class="job-header">
-        <div>
-          <h3>Consultant, ETL Test Engineer, HCL Technologies</h3>
-          <p style="margin: 0;">May 2023 &ndash; Oct 2024</p>
+        <ul>
+          <li>Validated ETL/DWH and cloud data across SIT and Production for the SMARTS market-abuse surveillance platform covering Fixed Income and Foreign Exchange.</li>
+          <li>Validated data-quality rules on the in-house DQE and investigated failed validations to root cause.</li>
+          <li>Reconciled source and target datasets with SQL structure, duplicate, null, record-count, DDL and column-mapping checks across 50+ tables per release.</li>
+          <li>Authored and executed 700+ automated Cucumber test cases, run through Jenkins CI/CD.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Cucumber</span>
+          <span class="tech-pill">SQL</span>
+          <span class="tech-pill">REST API</span>
+          <span class="tech-pill">Jenkins</span>
         </div>
-        <span class="meta">Client: ANZ Bank (New Zealand)</span>
-      </div>
-      <ul>
-        <li>Performed ETL/DWH testing across 8 sub-projects, validating 200+ ETL mappings for banking data flows.</li>
-        <li>Validated data-quality rules in Informatica DQ and investigated failed validations to root cause.</li>
-        <li>Authored and executed 550+ automated test scripts on a proprietary framework, managed through Bitbucket and Jenkins.</li>
-        <li>Tracked and reported 100+ defects through the complete defect lifecycle.</li>
-      </ul>
-    </article>
-    <article class="job">
-      <div class="job-header">
-        <div>
-          <h3>Software Test Engineer, Apexon</h3>
-          <p style="margin: 0;">Jun 2022 &ndash; May 2023</p>
+      </article>
+
+      <article class="timeline-item">
+        <div class="job-header">
+          <div>
+            <h3>Consultant, ETL Test Engineer, HCL</h3>
+            <p class="date">May 2023 &ndash; Oct 2024</p>
+          </div>
+          <span class="client-badge">Client: ANZ Bank (NZ)</span>
         </div>
-        <span class="meta">Client: IQVIA</span>
-      </div>
-      <ul>
-        <li>Validated BI, DWH and ETL data flows across two concurrent projects, covering 100+ reports and dashboards.</li>
-        <li>Reconciled Power BI and TIBCO Spotfire outputs against database sources across 30+ report components.</li>
-        <li>Reconciled source-to-target datasets across 80+ tables using SQL and Beyond Compare.</li>
-      </ul>
-    </article>
-    <article class="job">
-      <div class="job-header">
-        <div>
-          <h3>Software Test Engineer, Apexon</h3>
-          <p style="margin: 0;">Jul 2021 &ndash; Jun 2022</p>
+        <ul>
+          <li>Performed ETL/DWH testing across 8 sub-projects, validating 200+ ETL mappings for banking data flows.</li>
+          <li>Validated data-quality rules in Informatica DQ and investigated failed validations to root cause.</li>
+          <li>Authored and executed 550+ automated test scripts on a proprietary framework, managed through Bitbucket and Jenkins.</li>
+          <li>Tracked and reported 100+ defects through the complete defect lifecycle.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-pill">Informatica DQ</span>
+          <span class="tech-pill">SQL</span>
+          <span class="tech-pill">TAF-IntelliJ</span>
+          <span class="tech-pill">Jenkins</span>
+          <span class="tech-pill">Bitbucket</span>
         </div>
-        <span class="meta">Client: Transamerica (via Deloitte)</span>
-      </div>
-      <ul>
-        <li>Sole QA on a data lake migration from on-premises systems to AWS, covering 60+ tables.</li>
-        <li>Validated data-quality rules on the in-house DQE during the migration.</li>
-        <li>Wrote complex SQL comparisons between source and target and identified 50+ data discrepancies, documenting root causes in JIRA.</li>
-      </ul>
-    </article>
+      </article>
+
+      <article class="timeline-item">
+        <div class="job-header">
+          <div>
+            <h3>Software Test Engineer, Apexon</h3>
+            <p class="date">Jun 2022 &ndash; May 2023</p>
+          </div>
+          <span class="client-badge">Client: IQVIA</span>
+        </div>
+        <ul>
+          <li>Validated BI, DWH and ETL data flows across two concurrent projects, covering 100+ reports and dashboards.</li>
+          <li>Reconciled Power BI and TIBCO Spotfire outputs against database sources across 30+ report components.</li>
+          <li>Reconciled source-to-target datasets across 80+ tables using SQL and Beyond Compare.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-pill">Power BI</span>
+          <span class="tech-pill">TIBCO Spotfire</span>
+          <span class="tech-pill">SQL</span>
+          <span class="tech-pill">Selenium</span>
+          <span class="tech-pill">JIRA</span>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="job-header">
+          <div>
+            <h3>Software Test Engineer, Apexon</h3>
+            <p class="date">Jul 2021 &ndash; Jun 2022</p>
+          </div>
+          <span class="client-badge">Client: Transamerica</span>
+        </div>
+        <ul>
+          <li>Sole QA on a data lake migration from on-premises systems to AWS, covering 60+ tables.</li>
+          <li>Validated data-quality rules on the in-house DQE during the migration.</li>
+          <li>Wrote complex SQL comparisons between source and target and identified 50+ data discrepancies.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">SQL</span>
+          <span class="tech-pill">DQE</span>
+        </div>
+      </article>
+
+    </div>
   </section>
 
   <!-- Education Section -->
   <section id="education" class="tab-content">
-    <h2>Education</h2>
-    <div class="cards">
-      <div class="card">
+    <h2>Education Background</h2>
+    <div class="timeline">
+      <article class="timeline-item">
         <h3>Master of Business Administration (MBA)</h3>
-        <p style="color: var(--accent); font-weight: 500; margin-bottom: 12px;">Marketing Major / HR Minor</p>
-        <p>Sri Venkateswara University, India<br>2017 &ndash; 2019</p>
-      </div>
-      <div class="card">
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">Marketing Major / HR Minor</p>
+        <p style="color: var(--text-muted);">Sri Venkateswara University, India<br>2017 &ndash; 2019</p>
+      </article>
+      <article class="timeline-item">
         <h3>Bachelor of Science in Computers</h3>
-        <p style="color: var(--accent); font-weight: 500; margin-bottom: 12px;">BSc Computers</p>
-        <p>Yogi Vemana University, India<br>2016</p>
-      </div>
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">BSc Computers</p>
+        <p style="color: var(--text-muted);">Yogi Vemana University, India<br>2016</p>
+      </article>
     </div>
   </section>
 
@@ -474,7 +588,7 @@ a:hover { color: #fff; }
 
   <!-- Contact Section -->
   <section id="contact" class="tab-content">
-    <h2>Contact</h2>
+    <h2>Let's Connect</h2>
     <div class="cards">
       <div class="card" style="display: flex; align-items: center; gap: 24px;">
         <svg width="48" height="48" fill="var(--accent)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
