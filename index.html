@@ -6,137 +6,421 @@
 <title>Saikumar Nukala | ETL / Data Quality Test Engineer</title>
 <meta name="description" content="ETL / Data Quality Test Engineer with 5+ years validating data for Nomura, ANZ Bank, IQVIA and Transamerica. Remote from India.">
 <style>
-:root{--bg:#f3f5f7;--panel:#fff;--ink:#14212b;--mute:#4b5b68;--line:#d5dce2;--ok:#0e7c66;--ok-bg:#e3f3ee}
-@media (prefers-color-scheme:dark){:root{--bg:#0f171d;--panel:#16212a;--ink:#e8eef2;--mute:#9db0bd;--line:#2a3a46;--ok:#4cc9a8;--ok-bg:#12332b}}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--ok)}
-a:focus-visible{outline:3px solid var(--ok);outline-offset:3px}
-main{max-width:920px;margin:0 auto;padding:56px 22px 72px}
-h1,h2,h3{font-family:Charter,"Iowan Old Style",Georgia,serif;line-height:1.2;margin:0}
-h1{font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:-.02em}
-h2{font-size:1.6rem;margin:64px 0 18px}
-h3{font-size:1.1rem}
-p{margin:0 0 12px;max-width:68ch}
-.role{font-size:1.25rem;color:var(--mute);margin:8px 0 22px;font-family:Charter,Georgia,serif}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
-@media (max-width:760px){.hero{grid-template-columns:1fr}}
-.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.btn{display:inline-block;padding:10px 18px;border:1.5px solid var(--ink);border-radius:6px;color:var(--ink);text-decoration:none;font-weight:600}
-.btn.main{background:var(--ink);color:var(--bg)}
-.btn:focus-visible{outline:3px solid var(--ok);outline-offset:3px}
-.check{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
-.check h2{font-size:1.05rem;margin:0 0 4px}
-.check p{font-size:.92rem;color:var(--mute);margin:0 0 14px}
-.check ul{list-style:none;margin:0;padding:0}
-.check li{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:.97rem}
-.pass{background:var(--ok-bg);color:var(--ok);font-weight:700;font-size:.82rem;padding:2px 10px;border-radius:99px}
-.job{padding:22px 0;border-top:1px solid var(--line)}
-.job .meta{color:var(--mute);font-size:.94rem;margin:2px 0 10px}
-.job ul,.skills ul{margin:0;padding-left:20px}
-.job li{margin:5px 0;max-width:72ch}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
-.card p{font-size:.95rem;color:var(--mute);margin:8px 0 0}
-dl{margin:0;display:grid;grid-template-columns:200px 1fr;gap:10px 18px}
-@media (max-width:640px){dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:12px}}
-dt{font-weight:700}
-dd{margin:0;color:var(--mute)}
-footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:.92rem}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:root {
+  --bg: #f3f5f7;
+  --panel: #fff;
+  --ink: #14212b;
+  --mute: #4b5b68;
+  --line: #d5dce2;
+  --ok: #0e7c66;
+  --ok-bg: #e3f3ee;
+  --nav-bg: #ffffff;
+  --nav-hover: #f0f4f8;
+  --active-tab: #0e7c66;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f171d;
+    --panel: #16212a;
+    --ink: #e8eef2;
+    --mute: #9db0bd;
+    --line: #2a3a46;
+    --ok: #4cc9a8;
+    --ok-bg: #12332b;
+    --nav-bg: #111a22;
+    --nav-hover: #1c2a36;
+    --active-tab: #4cc9a8;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+a { color: var(--ok); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 3px solid var(--ok); outline-offset: 3px; }
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+.nav-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 20px;
+  max-width: 1000px;
+  width: 100%;
+  scrollbar-width: none; /* Firefox */
+}
+.nav-container::-webkit-scrollbar { display: none; } /* Chrome */
+.nav-item {
+  background: transparent;
+  border: none;
+  color: var(--mute);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.nav-item:hover {
+  background: var(--nav-hover);
+  color: var(--ink);
+}
+.nav-item.active {
+  background: var(--ok-bg);
+  color: var(--active-tab);
+  font-weight: 600;
+}
+
+/* Layout */
+.app-container {
+  max-width: 920px;
+  margin: 80px auto 40px;
+  padding: 0 22px;
+  width: 100%;
+}
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.tab-content.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography & General */
+h1, h2, h3 { font-family: Charter, "Iowan Old Style", Georgia, serif; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 2.8rem); letter-spacing: -0.02em; }
+h2 { font-size: 1.6rem; margin: 0 0 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 12px; max-width: 68ch; }
+.role { font-size: 1.2rem; color: var(--mute); margin: 8px 0 22px; font-family: Charter, Georgia, serif; }
+
+/* Home Section */
+.hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: start; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+.links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.btn { display: inline-block; padding: 10px 18px; border: 1.5px solid var(--ink); border-radius: 6px; color: var(--ink); text-decoration: none; font-weight: 600; }
+.btn.main { background: var(--ink); color: var(--bg); }
+.btn:focus-visible { outline: 3px solid var(--ok); outline-offset: 3px; }
+.btn:hover { text-decoration: none; opacity: 0.9; }
+
+/* Rules Box */
+.check { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; }
+.check h3 { font-size: 1.05rem; margin: 0 0 4px; border: none; padding: 0; }
+.check p { font-size: 0.92rem; color: var(--mute); margin: 0 0 14px; }
+.check ul { list-style: none; margin: 0; padding: 0; }
+.check li { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); font-size: 0.97rem; }
+.pass { background: var(--ok-bg); color: var(--ok); font-weight: 700; font-size: 0.82rem; padding: 2px 10px; border-radius: 99px; }
+
+/* Experience */
+.job { padding: 0 0 32px; }
+.job .meta { color: var(--mute); font-size: 0.94rem; margin: 2px 0 10px; }
+.job ul { margin: 0; padding-left: 20px; }
+.job li { margin: 5px 0; max-width: 72ch; }
+
+/* Cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.card h3 { border: none; padding: 0; margin-bottom: 8px; }
+.card p { font-size: 0.95rem; color: var(--mute); margin: 0; }
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.skill-category { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.skill-category h3 { font-size: 1rem; margin-bottom: 12px; color: var(--ink); border-bottom: none; padding: 0; }
+.skill-category p { font-size: 0.95rem; color: var(--mute); margin: 0; line-height: 1.5; }
+
+/* Contact & General List Items */
+.list-item { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+.list-item h3 { border: none; padding: 0; margin-bottom: 4px; }
+.list-item p { margin: 0; color: var(--mute); line-height: 1.5; }
+
+/* Desktop Navigation */
+@media (min-width: 1024px) {
+  body { flex-direction: row; }
+  .navbar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border-bottom: none; border-right: 1px solid var(--line); align-items: flex-start; justify-content: flex-start; }
+  .nav-container { flex-direction: column; padding: 40px 20px; }
+  .app-container { margin: 40px auto 40px 280px; max-width: 800px; padding: 0 40px; }
+  .nav-item { text-align: left; padding: 12px 16px; font-size: 1rem; }
+}
 </style>
 </head>
 <body>
-<main>
-<section class="hero" aria-label="Introduction">
-  <div>
-    <h1>Saikumar Nukala</h1>
-    <p class="role">ETL / Data Quality Test Engineer</p>
-    <p>I validate that data arrives complete, correct and traceable. Over 5+ years I have tested ETL and data warehouse loads, data migrations and data-quality rules for Nomura (UK), ANZ Bank (New Zealand), IQVIA and Transamerica (US, via Deloitte).</p>
-    <p>I work remotely from India. Primary hours are IST, with UK/EU mornings and US East evenings on request. Open to full-time or contract roles.</p>
-    <div class="links">
-      <a class="btn main" href="https://www.linkedin.com/in/saikumarnukala">Message me on LinkedIn</a>
-      <a class="btn" href="https://github.com/saikumarnukala">See my GitHub</a>
-    </div>
+
+<nav class="navbar" aria-label="Main Navigation">
+  <div class="nav-container">
+    <button class="nav-item active" onclick="showTab('home', this)">Home</button>
+    <button class="nav-item" onclick="showTab('experience', this)">Experience</button>
+    <button class="nav-item" onclick="showTab('education', this)">Education</button>
+    <button class="nav-item" onclick="showTab('companies', this)">Companies</button>
+    <button class="nav-item" onclick="showTab('projects', this)">Projects</button>
+    <button class="nav-item" onclick="showTab('skills', this)">Skills</button>
+    <button class="nav-item" onclick="showTab('awards', this)">Awards</button>
+    <button class="nav-item" onclick="showTab('contact', this)">Contact</button>
   </div>
-  <aside class="check" aria-label="Data-quality rule types I validate">
-    <h2>Rules I validate</h2>
-    <p>500+ data-quality rule validations on an in-house DQE and Informatica DQ.</p>
-    <ul>
-      <li>Mandatory columns <span class="pass">Pass</span></li>
-      <li>Multi-column deduplication <span class="pass">Pass</span></li>
-      <li>Completeness <span class="pass">Pass</span></li>
-      <li>Uniqueness <span class="pass">Pass</span></li>
-      <li>Referential integrity <span class="pass">Pass</span></li>
-    </ul>
-  </aside>
-</section>
+</nav>
 
-<h2>Experience</h2>
-<article class="job">
-  <h3>Quality Analyst, Matrix USA</h3>
-  <p class="meta">Client: Nomura (UK), Market Abuse Surveillance. Oct 2024 to present</p>
-  <ul>
-    <li>Validated ETL/DWH and cloud data across SIT and Production for the SMARTS surveillance platform, covering Fixed Income and Foreign Exchange.</li>
-    <li>Validated data-quality rules on the in-house DQE and investigated failed validations to root cause.</li>
-    <li>Reconciled source and target datasets with SQL structure, duplicate, null, record-count, DDL and column-mapping checks across 50+ tables per release.</li>
-    <li>Authored and executed 700+ automated Cucumber test cases, run through Jenkins CI/CD.</li>
-  </ul>
-</article>
-<article class="job">
-  <h3>Consultant, ETL Test Engineer, HCL Technologies</h3>
-  <p class="meta">Client: ANZ Bank (New Zealand). May 2023 to Oct 2024</p>
-  <ul>
-    <li>Performed ETL/DWH testing across 8 sub-projects, validating 200+ ETL mappings for banking data flows.</li>
-    <li>Validated data-quality rules in Informatica DQ and investigated failed validations to root cause.</li>
-    <li>Authored and executed 550+ automated test scripts on a proprietary framework, managed through Bitbucket and Jenkins.</li>
-    <li>Tracked and reported 100+ defects through the complete defect lifecycle.</li>
-  </ul>
-</article>
-<article class="job">
-  <h3>Software Test Engineer, Apexon</h3>
-  <p class="meta">Client: IQVIA, Clinical Analytics. Jun 2022 to May 2023</p>
-  <ul>
-    <li>Validated BI, DWH and ETL data flows across two concurrent projects, covering 100+ reports and dashboards.</li>
-    <li>Reconciled Power BI and TIBCO Spotfire outputs against database sources across 30+ report components.</li>
-    <li>Reconciled source-to-target datasets across 80+ tables using SQL and Beyond Compare.</li>
-  </ul>
-</article>
-<article class="job">
-  <h3>Software Test Engineer, Apexon</h3>
-  <p class="meta">Client: Transamerica via Deloitte, Long-Term Care Data Lake. Jul 2021 to Jun 2022</p>
-  <ul>
-    <li>Sole QA on a data lake migration from on-premises systems to AWS, covering 60+ tables.</li>
-    <li>Validated data-quality rules on the in-house DQE during the migration.</li>
-    <li>Wrote complex SQL comparisons between source and target and identified 50+ data discrepancies, documenting root causes in JIRA.</li>
-  </ul>
-</article>
+<main class="app-container">
 
-<h2>Projects</h2>
-<div class="cards">
-  <div class="card"><h3>Data Validator (Python)</h3><p>End-to-end ETL checks for data, duplicates, nulls, counts and DDL across CSV, Excel, text files, SQL Server and Oracle.</p></div>
-  <div class="card"><h3>Excel Query Generator</h3><p>An Excel-based utility that generates SQL queries for source, staging and target tables.</p></div>
-  <div class="card"><h3>ETL Validation Framework (Python)</h3><p>A reusable framework for data comparison, schema validation and regression testing of ETL workflows.</p></div>
-</div>
+  <!-- Home Section -->
+  <section id="home" class="tab-content active">
+    <div class="hero">
+      <div>
+        <h1>Saikumar Nukala</h1>
+        <p class="role">ETL / Data Quality Test Engineer</p>
+        <p>I validate that data arrives complete, correct and traceable. Over 5+ years I have tested ETL and data warehouse loads, data migrations and data-quality rules for Nomura (UK), ANZ Bank (New Zealand), IQVIA and Transamerica (US, via Deloitte).</p>
+        <p>I work remotely from India. Primary hours are IST, with UK/EU mornings and US East evenings on request. Open to full-time or contract roles.</p>
+        <div class="links">
+          <a class="btn main" href="https://www.linkedin.com/in/saikumarnukala">Message me on LinkedIn</a>
+          <a class="btn" href="https://github.com/saikumarnukala">See my GitHub</a>
+        </div>
+      </div>
+      <aside class="check" aria-label="Data-quality rule types I validate">
+        <h3>Rules I validate</h3>
+        <p>500+ data-quality rule validations on an in-house DQE and Informatica DQ.</p>
+        <ul>
+          <li>Mandatory columns <span class="pass">Pass</span></li>
+          <li>Multi-column deduplication <span class="pass">Pass</span></li>
+          <li>Completeness <span class="pass">Pass</span></li>
+          <li>Uniqueness <span class="pass">Pass</span></li>
+          <li>Referential integrity <span class="pass">Pass</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-<h2>Skills</h2>
-<dl class="skills">
-  <dt>ETL and DWH testing</dt><dd>Source-to-target validation, reconciliation, data mapping, data migration testing, schema and DDL checks</dd>
-  <dt>Data quality</dt><dd>In-house DQE, Informatica DQ, completeness, uniqueness, referential integrity, root-cause analysis</dd>
-  <dt>SQL and databases</dt><dd>Advanced SQL; SQL Server, Oracle, Amazon Redshift, Teradata</dd>
-  <dt>Automation</dt><dd>Python, Cucumber, Selenium WebDriver, Postman, REST API testing</dd>
-  <dt>BI testing</dt><dd>Power BI, TIBCO Spotfire</dd>
-  <dt>Delivery tools</dt><dd>JIRA, HP ALM, Micro Focus ALM, Jenkins, Git, Bitbucket, AWS S3</dd>
-</dl>
+  <!-- Experience Section -->
+  <section id="experience" class="tab-content">
+    <h2>Experience</h2>
+    <article class="job">
+      <h3>Quality Analyst, Matrix USA</h3>
+      <p class="meta">Client: Nomura (UK), Market Abuse Surveillance. Oct 2024 to present</p>
+      <ul>
+        <li>Validated ETL/DWH and cloud data across SIT and Production for the SMARTS surveillance platform, covering Fixed Income and Foreign Exchange.</li>
+        <li>Validated data-quality rules on the in-house DQE and investigated failed validations to root cause.</li>
+        <li>Reconciled source and target datasets with SQL structure, duplicate, null, record-count, DDL and column-mapping checks across 50+ tables per release.</li>
+        <li>Authored and executed 700+ automated Cucumber test cases, run through Jenkins CI/CD.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <h3>Consultant, ETL Test Engineer, HCL Technologies</h3>
+      <p class="meta">Client: ANZ Bank (New Zealand). May 2023 to Oct 2024</p>
+      <ul>
+        <li>Performed ETL/DWH testing across 8 sub-projects, validating 200+ ETL mappings for banking data flows.</li>
+        <li>Validated data-quality rules in Informatica DQ and investigated failed validations to root cause.</li>
+        <li>Authored and executed 550+ automated test scripts on a proprietary framework, managed through Bitbucket and Jenkins.</li>
+        <li>Tracked and reported 100+ defects through the complete defect lifecycle.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <h3>Software Test Engineer, Apexon</h3>
+      <p class="meta">Client: IQVIA, Clinical Analytics. Jun 2022 to May 2023</p>
+      <ul>
+        <li>Validated BI, DWH and ETL data flows across two concurrent projects, covering 100+ reports and dashboards.</li>
+        <li>Reconciled Power BI and TIBCO Spotfire outputs against database sources across 30+ report components.</li>
+        <li>Reconciled source-to-target datasets across 80+ tables using SQL and Beyond Compare.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <h3>Software Test Engineer, Apexon</h3>
+      <p class="meta">Client: Transamerica via Deloitte, Long-Term Care Data Lake. Jul 2021 to Jun 2022</p>
+      <ul>
+        <li>Sole QA on a data lake migration from on-premises systems to AWS, covering 60+ tables.</li>
+        <li>Validated data-quality rules on the in-house DQE during the migration.</li>
+        <li>Wrote complex SQL comparisons between source and target and identified 50+ data discrepancies, documenting root causes in JIRA.</li>
+      </ul>
+    </article>
+  </section>
 
-<h2>Education</h2>
-<p>Master of Business Administration (MBA), Sri Venkateswara University, India, 2017 to 2019.<br>
-Bachelor of Science in Computers, Yogi Vemana University, India, 2016.</p>
+  <!-- Education Section -->
+  <section id="education" class="tab-content">
+    <h2>Education</h2>
+    <div class="list-item">
+      <h3>Master of Business Administration (MBA)</h3>
+      <p>Marketing major / HR minor<br>Sri Venkateswara University, India, 2017 to 2019</p>
+    </div>
+    <div class="list-item">
+      <h3>Bachelor of Science in Computers</h3>
+      <p>Yogi Vemana University, India, 2016</p>
+    </div>
+  </section>
 
-<footer>
-  <p>The fastest way to reach me is <a href="https://www.linkedin.com/in/saikumarnukala">LinkedIn</a>. Code is on <a href="https://github.com/saikumarnukala">GitHub</a>.</p>
-</footer>
+  <!-- Companies Section -->
+  <section id="companies" class="tab-content">
+    <h2>Companies</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Matrix USA</h3>
+        <p>Quality Analyst (Oct 2024 to present)</p>
+      </div>
+      <div class="card">
+        <h3>HCL Technologies</h3>
+        <p>Consultant, ETL Test Engineer (May 2023 to Oct 2024)</p>
+      </div>
+      <div class="card">
+        <h3>Apexon</h3>
+        <p>Software Test Engineer (Jul 2021 to May 2023)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="tab-content">
+    <h2>Projects</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Data Validator (Python)</h3>
+        <p>End-to-end ETL checks for data, duplicates, nulls, counts and DDL across CSV, Excel, text files, SQL Server and Oracle.</p>
+      </div>
+      <div class="card">
+        <h3>Excel Query Generator</h3>
+        <p>An Excel-based utility that generates SQL queries for source, staging and target tables.</p>
+      </div>
+      <div class="card">
+        <h3>ETL Validation Framework (Python)</h3>
+        <p>A reusable framework for data comparison, schema validation and regression testing of ETL workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="tab-content">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>ETL / Data Warehouse</h3>
+        <p>Source-to-target validation, reconciliation, data mapping, data migration testing, schema and DDL checks</p>
+      </div>
+      <div class="skill-category">
+        <h3>Data Quality</h3>
+        <p>In-house DQE, Informatica DQ, completeness, uniqueness, referential integrity, root-cause analysis</p>
+      </div>
+      <div class="skill-category">
+        <h3>SQL / Databases</h3>
+        <p>Advanced SQL; SQL Server, Oracle, Amazon Redshift, Teradata</p>
+      </div>
+      <div class="skill-category">
+        <h3>Automation</h3>
+        <p>Python, Cucumber, Selenium WebDriver</p>
+      </div>
+      <div class="skill-category">
+        <h3>API Testing</h3>
+        <p>Postman, REST API testing</p>
+      </div>
+      <div class="skill-category">
+        <h3>BI / Reporting</h3>
+        <p>Power BI, TIBCO Spotfire</p>
+      </div>
+      <div class="skill-category">
+        <h3>Cloud</h3>
+        <p>AWS S3</p>
+      </div>
+      <div class="skill-category">
+        <h3>CI/CD / Test Management</h3>
+        <p>JIRA, HP ALM, Micro Focus ALM, Jenkins, Git, Bitbucket</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section id="awards" class="tab-content">
+    <h2>Awards</h2>
+    <div class="list-item">
+      <h3>RNR Appreciation Award</h3>
+      <p>HCL Technologies</p>
+    </div>
+    <div class="list-item">
+      <h3>Best Employee Award</h3>
+      <p>Apexon</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="tab-content">
+    <h2>Contact</h2>
+    <div class="list-item">
+      <h3>LinkedIn</h3>
+      <p><a href="https://www.linkedin.com/in/saikumarnukala">linkedin.com/in/saikumarnukala</a></p>
+    </div>
+    <div class="list-item">
+      <h3>GitHub</h3>
+      <p><a href="https://github.com/saikumarnukala">github.com/saikumarnukala</a></p>
+    </div>
+  </section>
+
 </main>
+
+<script>
+  function showTab(tabId, btnElement) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(function(el) {
+      el.classList.remove('active');
+    });
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.nav-item').forEach(function(el) {
+      el.classList.remove('active');
+    });
+    
+    // Show selected tab
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+      selectedTab.classList.add('active');
+    }
+    
+    // Add active class to clicked button or find the button by hash
+    if (btnElement) {
+      btnElement.classList.add('active');
+    } else {
+      const hashBtn = document.querySelector(`.nav-item[onclick*="'${tabId}'"]`);
+      if (hashBtn) hashBtn.classList.add('active');
+    }
+    
+    // Update URL hash without jumping
+    if (history.pushState) {
+      history.pushState(null, null, '#' + tabId);
+    } else {
+      window.location.hash = '#' + tabId;
+    }
+    
+    // Scroll to top on mobile when changing tabs
+    if (window.innerWidth < 1024) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  // Handle browser back/forward and initial load
+  window.addEventListener('popstate', function() {
+    const hash = window.location.hash.substring(1) || 'home';
+    showTab(hash, null);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.substring(1) || 'home';
+    showTab(hash, null);
+  });
+</script>
 </body>
 </html>
